@@ -169,3 +169,59 @@ window.RESOURCE = "products";             // Nombre del recurso en tu API
 
 - Repositorio en GitHub con visibilidad pública
 - El sistema levanta con un único comando
+
+
+## Mi implementación
+
+**Nivel declarado: Nivel 3 — Senior + ambos bonus**
+
+### Dominio elegido
+Gestión de libros. Cada registro representa un libro con título, autor, género, páginas, precio y disponibilidad.
+
+### Stack utilizado
+- **Backend:** Node.js + Express
+- **Base de datos:** PostgreSQL 16
+- **Contenedización:** Docker + Docker Compose
+- **Frontend:** Nginx sirviendo archivos estáticos
+
+### Estructura del proyecto
+```
+job-simulator/
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── db.js        # Conexión a PostgreSQL
+│   │   ├── routes/
+│   │   │   └── books.js     # Endpoints del recurso
+│   │   └── app.js           # Configuración Express + CORS
+│   ├── server.js            # Punto de entrada
+│   ├── init.sql             # Script de inicialización de la BD
+│   ├── Dockerfile
+│   ├── package.json
+│   └── .env
+├── frontend/                # Frontend provisto, personalizado
+├── docker-compose.yml
+└── .env.example
+```
+
+### Endpoints implementados
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| GET | /books | Listar todos los libros |
+| GET | /books/:id | Obtener un libro |
+| POST | /books | Crear un libro |
+| PUT | /books/:id | Actualizar un libro completo |
+| PATCH | /books/:id | Actualizar campos parciales |
+| DELETE | /books/:id | Eliminar un libro |
+
+### Cómo levantar el sistema
+```bash
+docker-compose up --build
+```
+
+- Frontend: http://localhost:8088
+- API: http://localhost:8080/books
+
+### Bonus completados
+- ✅ Integración full stack — frontend incluido en docker-compose.yml
+- ✅ Personalización del frontend — campos con nombres reales del dominio
